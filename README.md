@@ -1,16 +1,46 @@
-# React + Vite
+# 🟢 Pip-Boy Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio inspired by the **Fallout Pip-Boy interface**, built with **React**.
+This project simulates a retro-futuristic operating system to showcase my skills, experience, and projects in an interactive way.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Features
 
-## React Compiler
+- Pip-Boy style UI inspired by Fallout
+- Boot screen simulation
+- Tab-based navigation (STAT, INV, DATA, LOG)
+- Scanline and CRT-style visual effects
+- Responsive layout adapted to different screen sizes
+- Modular and scalable React components
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript (ES6+)
+- CSS (custom styles & animations)
+- Vite
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+ ├─ components/
+ │   ├─ PipBoyFrame.jsx
+ │   ├─ PipboyMenu.jsx
+ │   ├─ BootScreen.jsx
+ ├─ sections/
+ │   ├─ Stat.jsx
+ │   ├─ Inv.jsx
+ │   ├─ Data.jsx
+ │   ├─ Log.jsx
+ ├─ styles/
+ │   ├─ pipboy.css
+ │   ├─ animations.css
+ │   ├─ variables.css
+ └─ App.jsx
+
