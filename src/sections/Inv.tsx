@@ -1,6 +1,18 @@
 import { useState } from "react";
 
-const projects = [
+type ProjectStatus = "ACTIVE" | "DEPLOYED" | "OFFLINE";
+
+interface Project {
+  id: number;
+  name: string;
+  tech: string;
+  status: ProjectStatus;
+  description: string;
+  repo?: string;
+  live?: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     name: "Pip-Boy Portfolio",
@@ -16,7 +28,7 @@ const projects = [
     tech: "Web Platform",
     status: "DEPLOYED",
     description:
-      "SESAECOL-GOB is the official institutional website of the Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima. Developed primarily using React, the platform provides structured access to institutional information and multiple public repositories, including financial data, events, articles, official records, curricula, FAQs, tools, reports, regulations, transparency resources, communication materials, and public policies.",
+      "SESAECOL-GOB is the official institutional website of the Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima...",
     live: "https://sesaecol-gob.com/",
   },
   {
@@ -25,7 +37,7 @@ const projects = [
     tech: "Frontend / Web System",
     status: "DEPLOYED",
     description:
-      "Interfaz Académica SESAECOL (IAS) is a web-based learning platform developed primarily using Moodle, providing user authentication (login and registration) and access to courses, informational resources, and tools from multiple institutions. The platform enables users to enroll in educational content and obtain certificates and/or official recognitions upon successful course completion. The platform allows users to enroll in educational content and obtain certificates and/or official recognitions upon successful course completion.",
+      "Interfaz Académica SESAECOL (IAS) is a web-based learning platform developed primarily using Moodle...",
     live: "https://iasesaecol.mx/",
   },
   {
@@ -34,7 +46,7 @@ const projects = [
     tech: "Web System",
     status: "OFFLINE",
     description:
-      "LINCE was an internal web system developed primarily with Ruby on Rails, designed for structured data collection and analysis. The platform allowed authorized users to register and manage population-related information, generate analytical reports, visualizations, statistics, and geographic mappings to support institutional decision-making. The system is currently offline.",
+      "LINCE was an internal web system developed primarily with Ruby on Rails...",
   },
   {
     id: 5,
@@ -42,12 +54,12 @@ const projects = [
     tech: "Web System",
     status: "OFFLINE",
     description:
-      "Inventory Control System (DIF) was a simple internal web-based inventory management system developed primarily using HTML and PHP. The system allowed authorized users to register, edit, delete, and view inventory records, supporting basic asset tracking and internal data management. The platform is currently offline.",
+      "Inventory Control System (DIF) was a simple internal web-based inventory management system...",
   },
 ];
 
 export default function Inv() {
-  const [selected, setSelected] = useState(projects[0]);
+  const [selected, setSelected] = useState<Project>(projects[0]!);
 
   return (
     <div className="inv-screen">

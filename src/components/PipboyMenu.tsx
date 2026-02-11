@@ -1,12 +1,20 @@
 import { useEffect, useRef } from "react";
+import type { Section } from "../types/navigation";
 
-const TABS = ["STAT", "INV", "DATA", "LOG"];
+interface PipboyMenuProps {
+  active: Section;
+  onChange: (section: Section) => void;
+}
 
-export default function PipboyMenu({ active, onChange }) {
-  const menuRef = useRef(null);
+const TABS: Section[] = ["STAT", "INV", "DATA", "LOG"];
+
+export default function PipboyMenu({ active, onChange }: PipboyMenuProps) {
+  const menuRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const activeTab = menuRef.current.querySelector(".active");
+    if (!menuRef.current) return;
+
+    const activeTab = menuRef.current.querySelector(".active") as HTMLElement | null;
     if (!activeTab) return;
 
     const menuRect = menuRef.current.getBoundingClientRect();
@@ -21,7 +29,7 @@ export default function PipboyMenu({ active, onChange }) {
 
   return (
     <nav className="pipboy-menu" ref={menuRef}>
-      {TABS.map(tab => (
+      {TABS.map((tab) => (
         <button
           key={tab}
           className={`pipboy-tab ${active === tab ? "active" : ""}`}

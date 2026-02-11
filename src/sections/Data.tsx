@@ -1,13 +1,55 @@
 import { useState } from "react";
 
-const dataSections = {
+type DataSectionKey = "experience" | "education" | "certifications";
+
+interface BaseItem {
+  id: number;
+  title: string;
+}
+
+interface ExperienceItem extends BaseItem {
+  place: string;
+  period: string;
+  description: string;
+}
+
+interface EducationItem extends BaseItem {
+  place: string;
+  period: string;
+  description: string;
+}
+
+interface CertificationItem extends BaseItem {
+  issuer: string;
+  year: string;
+  file: string;
+}
+
+type DataItem =
+  | ExperienceItem
+  | EducationItem
+  | CertificationItem;
+
+interface DataSection<T extends BaseItem> {
+  title: string;
+  items: T[];
+}
+
+type DataSections = {
+  experience: DataSection<ExperienceItem>;
+  education: DataSection<EducationItem>;
+  certifications: DataSection<CertificationItem>;
+};
+
+const dataSections: DataSections = {
   experience: {
     title: "EXPERIENCE",
     items: [
       {
         id: 1,
         title: "SESAECOL Web Developer",
-        place: "SESAECOL – Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima",
+        place:
+          "SESAECOL – Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima",
         period: "Feb 2025 – Present",
         description:
           "Development and maintenance of institutional web platforms focused on transparency and public access to information. Contributed to the development and ongoing maintenance of the official SESAECOL website and the IAS learning platform. Daily work includes frontend development with React, JavaScript, CSS, Sass, MongoDB, and Moodle-based educational solutions, ensuring accessibility, responsive design, and clear information structure.",
@@ -72,27 +114,30 @@ const dataSections = {
       },
     ],
   },
-
 };
 
+
 export default function Data() {
-  const [activeSection, setActiveSection] = useState("experience");
-  const [selected, setSelected] = useState(
-    dataSections.experience.items[0]
-  );
+  const [activeSection, setActiveSection] =
+    useState<DataSectionKey>("experience");
+
+  const [selected, setSelected] =
+    useState<DataItem>(dataSections.experience.items[0]!);
 
   const section = dataSections[activeSection];
 
   return (
     <div className="data-screen">
       <div className="data-menu">
-        {Object.keys(dataSections).map((key) => (
+        {(Object.keys(dataSections) as DataSectionKey[]).map((key) => (
           <button
             key={key}
-            className={`data-tab ${activeSection === key ? "active" : ""}`}
+            className={`data-tab ${
+              activeSection === key ? "active" : ""
+            }`}
             onClick={() => {
               setActiveSection(key);
-              setSelected(dataSections[key].items[0]);
+              setSelected(dataSections[key].items[0]!);
             }}
           >
             {dataSections[key].title}
@@ -117,35 +162,37 @@ export default function Data() {
       <div className="data-details">
         <div className="data-title">{selected.title}</div>
 
-        {selected.place && (
+        {"place" in selected && (
           <p>
             <span>PLACE</span> {selected.place}
           </p>
         )}
 
-        {selected.period && (
+        {"period" in selected && (
           <p>
             <span>PERIOD</span> {selected.period}
           </p>
         )}
 
-        {selected.issuer && (
+        {"issuer" in selected && (
           <p>
             <span>ISSUER</span> {selected.issuer}
           </p>
         )}
 
-        {selected.year && (
+        {"year" in selected && (
           <p>
             <span>YEAR</span> {selected.year}
           </p>
         )}
 
-        {selected.description && (
-          <p className="data-desc">{selected.description}</p>
+        {"description" in selected && (
+          <p className="data-desc">
+            {selected.description}
+          </p>
         )}
 
-        {selected.file && (
+        {"file" in selected && (
           <a
             href={selected.file}
             target="_blank"

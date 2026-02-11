@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 
-export default function BootScreen({ onFinish }) {
-  const [progress, setProgress] = useState(0);
-  const [message, setMessage] = useState("Initializing system...");
+type BootScreenProps = {
+  onFinish: () => void;
+};
+
+export default function BootScreen({ onFinish }: BootScreenProps) {
+  const [progress, setProgress] = useState<number>(0);
+  const [message, setMessage] = useState<string>("Initializing system...");
 
   useEffect(() => {
-    const messages = [
+    const messages: string[] = [
       "Initializing system...",
       "Loading core modules...",
       "Mounting data drive...",
@@ -14,7 +18,7 @@ export default function BootScreen({ onFinish }) {
     ];
 
     const interval = setInterval(() => {
-      setProgress(prev => {
+      setProgress((prev) => {
         const next = prev + Math.floor(Math.random() * 10) + 6;
 
         if (next >= 100) {
@@ -23,7 +27,7 @@ export default function BootScreen({ onFinish }) {
           return 100;
         }
 
-        setMessage(messages[Math.floor(Math.random() * messages.length)]);
+        setMessage(messages[Math.floor(Math.random() * messages.length)]!);
         return next;
       });
     }, 250);

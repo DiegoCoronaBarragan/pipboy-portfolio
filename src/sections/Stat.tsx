@@ -1,7 +1,27 @@
+interface Skill {
+  label: string;
+  value: number;
+}
+
+interface StatBarProps {
+  label: string;
+  value: number;
+}
+
+const skills: Skill[] = [
+  { label: "REACT", value: 75 },
+  { label: "RUBY ON RAILS", value: 70 },
+  { label: "JAVASCRIPT", value: 65 },
+  { label: "CSS / SASS", value: 75 },
+  { label: "MONGODB", value: 65 },
+  { label: "POSTGRESQL", value: 55 },
+  { label: "GIT / GITHUB", value: 70 },
+  { label: "PYTHON", value: 50 },
+];
+
 export default function Stat() {
   return (
     <div className="stat-screen">
-      {/* COLUMNA IZQUIERDA */}
       <div className="stat-left">
         <div className="stat-avatar">
           <div className="avatar-placeholder">
@@ -16,7 +36,6 @@ export default function Stat() {
         </div>
       </div>
 
-      {/* COLUMNA DERECHA */}
       <div className="stat-right">
         <div className="stat-info">
           <p><span>NAME</span> DIEGO J. CORONA BARRAGÁN</p>
@@ -27,14 +46,13 @@ export default function Stat() {
         <div className="stat-divider">SKILLS</div>
 
         <div className="stat-bars">
-          <StatBar label="REACT" value={75} />
-          <StatBar label="RUBY ON RAILS" value={70} />
-          <StatBar label="JAVASCRIPT" value={65} />
-          <StatBar label="CSS / SASS" value={75} />
-          <StatBar label="MONGODB" value={65} />
-          <StatBar label="POSTGRESQL" value={55} />
-          <StatBar label="GIT / GITHUB" value={70} />
-          <StatBar label="PYTHON" value={50} />
+          {skills.map((skill) => (
+            <StatBar
+              key={skill.label}
+              label={skill.label}
+              value={skill.value}
+            />
+          ))}
         </div>
 
         <div className="stat-divider">PROFILE</div>
@@ -56,12 +74,15 @@ export default function Stat() {
   );
 }
 
-function StatBar({ label, value }) {
+function StatBar({ label, value }: StatBarProps) {
   return (
     <div className="stat-bar">
       <span className="label">{label}</span>
       <div className="bar">
-        <div className="fill" style={{ width: `${value}%` }} />
+        <div
+          className="fill"
+          style={{ width: `${value}%` }}
+        />
       </div>
       <span className="value">{value}%</span>
     </div>

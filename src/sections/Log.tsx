@@ -1,12 +1,18 @@
 import { useState } from "react";
 
 export default function Log() {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<boolean>(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("d.coronabarragan@gmail.com");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async (): Promise<void> => {
+    try {
+      await navigator.clipboard.writeText(
+        "d.coronabarragan@gmail.com"
+      );
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error("Clipboard copy failed:", error);
+    }
   };
 
   return (
@@ -14,13 +20,24 @@ export default function Log() {
       <div className="log-header">USER PROFILE LOADED</div>
 
       <div className="log-info">
-        <p><span>NAME</span> Diego Jeancarlo Corona Barragán</p>
-        <p><span>ROLE</span> Full Stack Developer</p>
-        <p><span>LOCATION</span> Colima, Mexico</p>
+        <p>
+          <span>NAME</span> Diego Jeancarlo Corona Barragán
+        </p>
+
+        <p>
+          <span>ROLE</span> Full Stack Developer
+        </p>
+
+        <p>
+          <span>LOCATION</span> Colima, Mexico
+        </p>
 
         <p>
           <span>EMAIL</span> d.coronabarragan@gmail.com
-          <button className="copy-btn" onClick={handleCopy}>
+          <button
+            className="copy-btn"
+            onClick={handleCopy}
+          >
             {copied ? "COPIED" : "COPY"}
           </button>
         </p>
