@@ -16,10 +16,10 @@ const projects: Project[] = [
   {
     id: 1,
     name: "Pip-Boy Portfolio",
-    tech: "React / CSS",
+    tech: "React + TypeScript (Strict Mode)",
     status: "ACTIVE",
     description:
-      "Personal portfolio inspired by the Fallout Pip-Boy interface, designed to showcase projects, skills, and system-style UI interactions.",
+      "Personal portfolio inspired by the Fallout Pip-Boy interface, built with React and fully migrated to TypeScript using strict typing. The project focuses on component-based architecture, scalable state management, and strong type safety through interfaces, union types, and generics. Designed to simulate a system-style UI with animated boot sequences and modular sections for skills, projects, experience, and contact information.",
     repo: "https://github.com/DiegoCoronaBarragan/pipboy-portfolio",
   },
   {

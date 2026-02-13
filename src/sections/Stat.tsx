@@ -10,6 +10,7 @@ interface StatBarProps {
 
 const skills: Skill[] = [
   { label: "REACT", value: 75 },
+  { label: "TYPESCRIPT", value: 65 },
   { label: "RUBY ON RAILS", value: 70 },
   { label: "JAVASCRIPT", value: 65 },
   { label: "CSS / SASS", value: 75 },
