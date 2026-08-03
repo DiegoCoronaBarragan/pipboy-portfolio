@@ -25,9 +25,12 @@ export default function Stat() {
     <div className="stat-screen">
       <div className="stat-left">
         <div className="stat-avatar">
-          <div className="avatar-placeholder">
-            USER
-          </div>
+          <img
+            src="/images/Avatar.svg"
+            alt="Diego Corona"
+            className="stat-avatar-image"
+            style={{ width: "min(95vw, 760px)", height: "auto" }}
+          />
         </div>
 
         <div className="stat-info">
