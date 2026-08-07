@@ -6,8 +6,8 @@
 .pipboy-frame {
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 98%;
+  max-width: none;
+  max-height: none;
   border: 3px solid var(--pip-border);
   background: radial-gradient(circle at top, #003b1f, var(--pip-dark));
   box-shadow: 0 0 12px #00ff66;
@@ -139,7 +139,7 @@
 /* Stats section */
 .stat-screen {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: minmax(280px, 30%) minmax(0, 1fr);
   gap: 20px;
   height: 100%;
   align-items: start;
@@ -216,15 +216,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 100%;
   flex: 0 0 auto;
   padding: 4px 0;
 }
 
 .stat-avatar-image {
   display: block;
-  width: min(100%, 260px) !important;
-  max-width: 100% !important;
+  width: min(200%, 760px) !important;
+  max-width: none !important;
   height: auto !important;
   object-fit: contain;
 }
@@ -443,8 +443,8 @@
   }
 
   .pipboy-frame {
-    height: auto;
-    min-height: calc(100dvh - 16px);
+    height: 100%;
+    min-height: 0;
     max-height: none;
     padding: 12px;
   }
@@ -476,7 +476,7 @@
   }
 
   .stat-left {
-    align-items: flex-start;
+    align-items: center;
   }
 
   .data-menu,
@@ -506,5 +506,25 @@
 
   .log-info span {
     min-width: 76px;
+  }
+}
+
+
+/* Keep the Pip-Boy viewport independent from section content. */
+.app {
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.pipboy-frame {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .stat-avatar-image {
+    width: min(180%, 760px) !important;
   }
 }
