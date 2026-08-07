@@ -6,8 +6,8 @@
 .pipboy-frame {
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: 98%;
+  max-width: none;
+  max-height: none;
   border: 3px solid var(--pip-border);
   background: radial-gradient(circle at top, #003b1f, var(--pip-dark));
   box-shadow: 0 0 12px #00ff66;
@@ -68,7 +68,7 @@
   border-top: 2px solid var(--pip-border);
   padding: 24px;
   flex: 1;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* Boot screen */
@@ -139,7 +139,7 @@
 /* Stats section */
 .stat-screen {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: minmax(280px, 30%) minmax(0, 1fr);
   gap: 20px;
   height: 100%;
   align-items: start;
@@ -216,14 +216,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 100%;
   flex: 0 0 auto;
   padding: 4px 0;
 }
 
 .stat-avatar-image {
   display: block;
-  width: min(95vw, 760px) !important;
+  width: min(200%, 760px) !important;
   max-width: none !important;
   height: auto !important;
   object-fit: contain;
@@ -433,3 +433,98 @@
   text-shadow: 0 0 8px var(--pip-green);
 }
 
+
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .app {
+    align-items: stretch;
+    padding: 8px;
+  }
+
+  .pipboy-frame {
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    padding: 12px;
+  }
+
+  .pipboy-screen {
+    padding: 8px;
+  }
+
+  .pipboy-menu {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0 8px;
+  }
+
+  .pipboy-tab {
+    margin-right: 0;
+    padding: 10px 12px;
+  }
+
+  .pipboy-content {
+    padding: 16px 8px;
+  }
+
+  .stat-screen,
+  .inv-screen,
+  .data-screen {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .stat-left {
+    align-items: center;
+  }
+
+  .data-menu,
+  .data-list {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .log-info p {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 420px) {
+  .pipboy-tab {
+    flex: 1 1 50%;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .stat-bar {
+    grid-template-columns: 90px 1fr 42px;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .log-info span {
+    min-width: 76px;
+  }
+}
+
+
+/* Keep the Pip-Boy viewport independent from section content. */
+.app {
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding: 0;
+}
+
+.pipboy-frame {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .stat-avatar-image {
+    width: min(180%, 760px) !important;
+  }
+}
