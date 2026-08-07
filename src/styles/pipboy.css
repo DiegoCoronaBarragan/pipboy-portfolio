@@ -68,7 +68,7 @@
   border-top: 2px solid var(--pip-border);
   padding: 24px;
   flex: 1;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* Boot screen */
@@ -223,8 +223,8 @@
 
 .stat-avatar-image {
   display: block;
-  width: min(95vw, 760px) !important;
-  max-width: none !important;
+  width: min(100%, 260px) !important;
+  max-width: 100% !important;
   height: auto !important;
   object-fit: contain;
 }
@@ -433,3 +433,78 @@
   text-shadow: 0 0 8px var(--pip-green);
 }
 
+
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .app {
+    align-items: stretch;
+    padding: 8px;
+  }
+
+  .pipboy-frame {
+    height: auto;
+    min-height: calc(100dvh - 16px);
+    max-height: none;
+    padding: 12px;
+  }
+
+  .pipboy-screen {
+    padding: 8px;
+  }
+
+  .pipboy-menu {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0 8px;
+  }
+
+  .pipboy-tab {
+    margin-right: 0;
+    padding: 10px 12px;
+  }
+
+  .pipboy-content {
+    padding: 16px 8px;
+  }
+
+  .stat-screen,
+  .inv-screen,
+  .data-screen {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .stat-left {
+    align-items: flex-start;
+  }
+
+  .data-menu,
+  .data-list {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .log-info p {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 420px) {
+  .pipboy-tab {
+    flex: 1 1 50%;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .stat-bar {
+    grid-template-columns: 90px 1fr 42px;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .log-info span {
+    min-width: 76px;
+  }
+}
