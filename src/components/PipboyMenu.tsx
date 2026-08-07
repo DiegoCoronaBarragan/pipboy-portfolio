@@ -6,34 +6,45 @@ interface PipboyMenuProps {
   onChange: (section: Section) => void;
 }
 
-const TABS: Section[] = ["STAT", "INV", "DATA", "LOG"];
+const TABS: readonly Section[] = ["STAT", "INV", "DATA", "LOG"];
 
 export default function PipboyMenu({ active, onChange }: PipboyMenuProps) {
   const menuRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!menuRef.current) return;
+    const menu = menuRef.current;
+    if (!menu) return;
 
-    const activeTab = menuRef.current.querySelector(".active") as HTMLElement | null;
-    if (!activeTab) return;
+    const updateIndicator = () => {
+      const activeTab = menu.querySelector<HTMLElement>('[aria-current="page"]');
+      const menuRect = menu.getBoundingClientRect();
 
-    const menuRect = menuRef.current.getBoundingClientRect();
-    const tabRect = activeTab.getBoundingClientRect();
+      if (!activeTab || menuRect.width === 0) return;
 
-    const start = ((tabRect.left - menuRect.left) / menuRect.width) * 100;
-    const end = ((tabRect.right - menuRect.left) / menuRect.width) * 100;
+      const tabRect = activeTab.getBoundingClientRect();
+      const start = ((tabRect.left - menuRect.left) / menuRect.width) * 100;
+      const end = ((tabRect.right - menuRect.left) / menuRect.width) * 100;
 
-    menuRef.current.style.setProperty("--cut-start", `${start}%`);
-    menuRef.current.style.setProperty("--cut-end", `${end}%`);
+      menu.style.setProperty("--cut-start", start + "%");
+      menu.style.setProperty("--cut-end", end + "%");
+    };
+
+    updateIndicator();
+    const observer = new ResizeObserver(updateIndicator);
+    observer.observe(menu);
+
+    return () => observer.disconnect();
   }, [active]);
 
   return (
-    <nav className="pipboy-menu" ref={menuRef}>
+    <nav aria-label="Portfolio sections" className="pipboy-menu" ref={menuRef}>
       {TABS.map((tab) => (
         <button
           key={tab}
-          className={`pipboy-tab ${active === tab ? "active" : ""}`}
+          aria-current={active === tab ? "page" : undefined}
+          className={"pipboy-tab " + (active === tab ? "active" : "")}
           onClick={() => onChange(tab)}
+          type="button"
         >
           {tab}
         </button>
@@ -41,4 +52,3 @@ export default function PipboyMenu({ active, onChange }: PipboyMenuProps) {
     </nav>
   );
 }
-
