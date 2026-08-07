@@ -49,7 +49,7 @@ export default function Log() {
         </p>
       </div>
       <div className="log-actions">
-        <a className="log-link" href="/cv/Diego_Corona_CV.pdf" rel="noopener noreferrer" target="_blank">
+        <a className="log-link" href={import.meta.env.BASE_URL + "cv/Diego_Corona_CV.pdf"} rel="noopener noreferrer" target="_blank">
           DOWNLOAD CV
         </a>
       </div>
