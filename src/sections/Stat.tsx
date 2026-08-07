@@ -1,3 +1,5 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
 interface Skill {
   label: string;
   value: number;
@@ -28,7 +30,7 @@ export default function Stat() {
           <img
             alt="Diego Corona"
             className="stat-avatar-image"
-            src="/images/Avatar.svg"
+            src={BASE_URL + "images/Avatar.svg"}
           />
         </div>
         <div className="stat-info">
