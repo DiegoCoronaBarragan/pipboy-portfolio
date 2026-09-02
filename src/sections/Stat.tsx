@@ -47,7 +47,15 @@ export default function Stat() {
         </div>
         <div className="stat-divider">SKILLS</div>
         <div className="stat-bars">
-          {skills.map((skill) => <StatBar key={skill.label} {...skill} />)}
+          {skills.map((skill, index) => (
+            <div
+              key={skill.label}
+              className="section-content-item"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <StatBar {...skill} />
+            </div>
+          ))}
         </div>
         <div className="stat-divider">PROFILE</div>
         <p className="stat-description">
