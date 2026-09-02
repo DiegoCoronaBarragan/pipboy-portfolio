@@ -4,27 +4,38 @@ type StatProps = {
   onNavigate: (section: "INV") => void;
 };
 
-interface Skill {
-  label: string;
-  value: number;
+interface SkillGroup {
+  category: string;
+  skills: readonly string[];
+  evidence: string;
 }
 
-interface StatBarProps {
-  label: string;
-  value: number;
-}
-
-const skills: readonly Skill[] = [
-  { label: "REACT", value: 75 },
-  { label: "TYPESCRIPT", value: 65 },
-  { label: "RUBY ON RAILS", value: 70 },
-  { label: "JAVASCRIPT", value: 65 },
-  { label: "CSS / SASS", value: 75 },
-  { label: "MONGODB", value: 65 },
-  { label: "POSTGRESQL", value: 55 },
-  { label: "GIT / GITHUB", value: 70 },
-  { label: "PYTHON", value: 50 },
-];
+const skillGroups = [
+  {
+    category: "FRONTEND",
+    skills: ["React", "TypeScript", "JavaScript", "CSS / Sass"],
+    evidence:
+      "Responsive, component-based interfaces for institutional platforms.",
+  },
+  {
+    category: "BACKEND",
+    skills: ["Ruby on Rails", "Moodle"],
+    evidence:
+      "Reporting, client-management, and online learning platform features.",
+  },
+  {
+    category: "DATA",
+    skills: ["MongoDB", "PostgreSQL"],
+    evidence:
+      "Application persistence, CRUD workflows, and database management.",
+  },
+  {
+    category: "DELIVERY",
+    skills: ["Git", "GitHub", "Vite", "Responsive UI"],
+    evidence:
+      "Version-controlled development, production builds, and web deployment.",
+  },
+] as const satisfies readonly SkillGroup[];
 
 export default function Stat({ onNavigate }: StatProps) {
   return (
@@ -75,15 +86,13 @@ export default function Stat({ onNavigate }: StatProps) {
           </div>
         </div>
         <div className="stat-divider">SKILLS</div>
-        <div className="stat-bars">
-          {skills.map((skill, index) => (
-            <div
-              key={skill.label}
-              className="section-content-item"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <StatBar {...skill} />
-            </div>
+        <div className="skill-grid">
+          {skillGroups.map((group, index) => (
+            <SkillGroupCard
+              key={group.category}
+              {...group}
+              animationDelay={`${index * 0.06}s`}
+            />
           ))}
         </div>
       </div>
@@ -91,14 +100,31 @@ export default function Stat({ onNavigate }: StatProps) {
   );
 }
 
-function StatBar({ label, value }: StatBarProps) {
+type SkillGroupCardProps = SkillGroup & {
+  animationDelay: string;
+};
+
+function SkillGroupCard({
+  category,
+  skills,
+  evidence,
+  animationDelay,
+}: SkillGroupCardProps) {
   return (
-    <div className="stat-bar">
-      <span className="label">{label}</span>
-      <div className="bar">
-        <div className="fill" style={{ width: value + "%" }} />
-      </div>
-      <span className="value">{value}%</span>
-    </div>
+    <article
+      className="skill-group section-content-item"
+      style={{ animationDelay }}
+    >
+      <h2>{category}</h2>
+      <ul className="skill-tags" aria-label={`${category} technologies`}>
+        {skills.map((skill) => (
+          <li key={skill}>{skill}</li>
+        ))}
+      </ul>
+      <p className="skill-evidence">
+        <span>EVIDENCE</span>
+        {evidence}
+      </p>
+    </article>
   );
 }
