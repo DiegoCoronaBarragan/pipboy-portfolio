@@ -1,5 +1,9 @@
 const BASE_URL = import.meta.env.BASE_URL;
 
+type StatProps = {
+  onNavigate: (section: "INV") => void;
+};
+
 interface Skill {
   label: string;
   value: number;
@@ -22,7 +26,7 @@ const skills: readonly Skill[] = [
   { label: "PYTHON", value: 50 },
 ];
 
-export default function Stat() {
+export default function Stat({ onNavigate }: StatProps) {
   return (
     <div className="stat-screen">
       <div className="stat-left">
@@ -40,10 +44,35 @@ export default function Stat() {
         </div>
       </div>
       <div className="stat-right">
-        <div className="stat-info">
-          <p><span>NAME</span> DIEGO J. CORONA BARRAGÁN</p>
-          <p><span>ROLE</span> FULL STACK DEVELOPER</p>
-          <p><span>FOCUS</span> WEB APPLICATIONS</p>
+        <div className="stat-hero">
+          <p className="stat-eyebrow">PROFILE // FULL STACK DEVELOPER</p>
+          <h1>DIEGO J. CORONA BARRAGÁN</h1>
+          <p className="stat-headline">
+            I build accessible, maintainable web applications from interface
+            to database.
+          </p>
+          <p className="stat-summary">
+            Professional experience developing and maintaining institutional
+            platforms with React, TypeScript, Ruby on Rails, MongoDB, and
+            PostgreSQL, focused on practical solutions for real users.
+          </p>
+          <div className="stat-actions">
+            <button
+              className="stat-action"
+              onClick={() => onNavigate("INV")}
+              type="button"
+            >
+              VIEW PROJECTS
+            </button>
+            <a
+              className="stat-action"
+              href={BASE_URL + "cv/Diego_Corona_CV.pdf"}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              DOWNLOAD CV
+            </a>
+          </div>
         </div>
         <div className="stat-divider">SKILLS</div>
         <div className="stat-bars">
@@ -57,10 +86,6 @@ export default function Stat() {
             </div>
           ))}
         </div>
-        <div className="stat-divider">PROFILE</div>
-        <p className="stat-description">
-          I'm an Intelligent Computer Engineer passionate about web development in both front-end and back-end. I'm open to different perspectives and problem-solving approaches, always seeking efficient and well-structured solutions. I have a strong interest in system improvement, optimization, and technical innovation, with a mindset focused on performance, scalability, and maintainability. I am committed to staying up-to-date with modern technologies and development tools while continuously learning and improving. My goal is to grow professionally as a full-stack developer, working collaboratively within a team, learning from experienced developers, and gradually advancing to higher levels of responsibility.
-        </p>
       </div>
     </div>
   );
