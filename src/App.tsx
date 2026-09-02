@@ -11,7 +11,11 @@ import "./styles/variables.css";
 import "./styles/pipboy.css";
 import "./styles/animations.css";
 
-const SECTION_COMPONENTS: Record<Section, ComponentType> = {
+interface SectionComponentProps {
+  onNavigate: (section: Section) => void;
+}
+
+const SECTION_COMPONENTS: Record<Section, ComponentType<SectionComponentProps>> = {
   STAT: Stat,
   INV: Inv,
   DATA: Data,
@@ -22,6 +26,9 @@ function App() {
   const [booted, setBooted] = useState(false);
   const [section, setSection] = useState<Section>("STAT");
   const handleBootFinish = useCallback(() => setBooted(true), []);
+  const handleNavigate = useCallback((nextSection: Section) => {
+    setSection(nextSection);
+  }, []);
   const CurrentSection = SECTION_COMPONENTS[section];
 
   return (
@@ -34,7 +41,7 @@ function App() {
             <PipboyMenu active={section} onChange={setSection} />
             <main className="pipboy-content">
               <div key={section} className="section-transition">
-                <CurrentSection />
+                <CurrentSection onNavigate={handleNavigate} />
               </div>
             </main>
           </div>
