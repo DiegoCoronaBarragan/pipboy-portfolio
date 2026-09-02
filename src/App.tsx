@@ -33,7 +33,9 @@ function App() {
           <div className="pipboy-layout">
             <PipboyMenu active={section} onChange={setSection} />
             <main className="pipboy-content">
-              <CurrentSection />
+              <div key={section} className="section-transition">
+                <CurrentSection />
+              </div>
             </main>
           </div>
         )}
