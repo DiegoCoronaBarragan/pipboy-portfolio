@@ -26,30 +26,67 @@ export default function Log() {
 
   return (
     <div className="log-screen">
-      <div className="log-header">{copy.header}</div>
-      <div className="log-info">
-        <p><span>{copy.name}</span> Diego Jeancarlo Corona Barragán</p>
-        <p><span>{copy.role}</span> {copy.roleValue}</p>
-        <p><span>{copy.location}</span> {copy.locationValue}</p>
-        <p>
-          <span>{copy.email}</span> {EMAIL}
-          <button className="copy-btn" onClick={handleCopy} type="button">
-            {copied ? copy.copied : copy.copy}
-          </button>
-        </p>
-        <p>
-          <span>GITHUB</span>
-          <a href="https://github.com/DiegoCoronaBarragan" rel="noopener noreferrer" target="_blank">github.com/DiegoCoronaBarragan</a>
-        </p>
-        <p>
-          <span>LINKEDIN</span>
-          <a href="https://www.linkedin.com/in/itsdiegocorona/" rel="noopener noreferrer" target="_blank">linkedin.com/in/itsdiegocorona</a>
-        </p>
-      </div>
-      <div className="log-actions">
-        <a className="log-link" href={import.meta.env.BASE_URL + "cv/Diego_Corona_CV.pdf"} rel="noopener noreferrer" target="_blank">
-          {copy.downloadCv}
-        </a>
+      <header className="log-hero">
+        <div className="log-hero-topline">
+          <p className="log-kicker">{copy.kicker}</p>
+          <span className="log-status">{copy.status}</span>
+        </div>
+        <h1>{copy.title}</h1>
+        <p className="log-intro">{copy.intro}</p>
+      </header>
+
+      <div className="log-contact-grid">
+        <section className="log-profile" aria-labelledby="contact-profile-title">
+          <h2 className="log-header" id="contact-profile-title">{copy.header}</h2>
+          <div className="log-info">
+            <p><span>{copy.name}</span> Diego Jeancarlo Corona Barragán</p>
+            <p><span>{copy.role}</span> {copy.roleValue}</p>
+            <p><span>{copy.location}</span> {copy.locationValue}</p>
+            <p className="log-email-row">
+              <span>{copy.email}</span>
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <button className="copy-btn" onClick={handleCopy} type="button">
+                {copied ? copy.copied : copy.copy}
+              </button>
+              <span className="copy-feedback" aria-live="polite" role="status">
+                {copied ? copy.copyConfirmation : ""}
+              </span>
+            </p>
+          </div>
+        </section>
+
+        <nav className="log-actions" aria-label={copy.actionsLabel}>
+          <a
+            className="log-link log-link-primary"
+            href={`mailto:${EMAIL}?subject=${encodeURIComponent(copy.emailSubject)}`}
+          >
+            {copy.sendEmail}
+          </a>
+          <a
+            className="log-link"
+            href="https://www.linkedin.com/in/itsdiegocorona/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {copy.viewLinkedIn}
+          </a>
+          <a
+            className="log-link"
+            href="https://github.com/DiegoCoronaBarragan"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {copy.viewGithub}
+          </a>
+          <a
+            className="log-link"
+            href={import.meta.env.BASE_URL + "cv/Diego_Corona_CV.pdf"}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {copy.downloadCv}
+          </a>
+        </nav>
       </div>
     </div>
   );
