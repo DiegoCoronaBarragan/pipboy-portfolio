@@ -20,6 +20,10 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+function setMetaContent(selector: string, value: string) {
+  document.querySelector<HTMLMetaElement>(selector)?.setAttribute("content", value);
+}
+
 function getInitialLanguage(): Language {
   try {
     return window.localStorage.getItem(STORAGE_KEY) === "es" ? "es" : "en";
@@ -30,20 +34,34 @@ function getInitialLanguage(): Language {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const content = portfolioContent[language];
 
   useEffect(() => {
     document.documentElement.lang = language;
+    document.title = content.seo.title;
+    setMetaContent('meta[name="description"]', content.seo.description);
+    setMetaContent('meta[property="og:title"]', content.seo.title);
+    setMetaContent('meta[property="og:description"]', content.seo.description);
+    setMetaContent('meta[property="og:image:alt"]', content.seo.imageAlt);
+    setMetaContent('meta[property="og:locale"]', content.seo.locale);
+    setMetaContent(
+      'meta[property="og:locale:alternate"]',
+      content.seo.alternateLocale,
+    );
+    setMetaContent('meta[name="twitter:title"]', content.seo.title);
+    setMetaContent('meta[name="twitter:description"]', content.seo.description);
+    setMetaContent('meta[name="twitter:image:alt"]', content.seo.imageAlt);
 
     try {
       window.localStorage.setItem(STORAGE_KEY, language);
     } catch {
       // The interface still works when storage is unavailable.
     }
-  }, [language]);
+  }, [content.seo, language]);
 
   const value = useMemo(
-    () => ({ language, setLanguage, content: portfolioContent[language] }),
-    [language],
+    () => ({ language, setLanguage, content }),
+    [content, language],
   );
 
   return (
