@@ -30,10 +30,12 @@ export default function Inv() {
 
   return (
     <div className="inv-screen">
-      <div className="inv-list" aria-label={copy.listLabel}>
+      <div className="inv-list" aria-label={copy.listLabel} role="group">
         {projects.map((project, index) => (
           <button
             key={project.id}
+            aria-controls="project-details"
+            aria-pressed={selected.id === project.id}
             className={`inv-item ${selected.id === project.id ? "active" : ""}`}
             onClick={() => setSelectedId(project.id)}
             type="button"
@@ -47,11 +49,15 @@ export default function Inv() {
         ))}
       </div>
 
-      <article className="inv-details">
+      <article
+        className="inv-details"
+        id="project-details"
+        aria-labelledby={`project-title-${selected.id}`}
+      >
         <header className="inv-header">
           <p className="inv-kicker">{copy.caseStudy} // {selected.type}</p>
           <div className="inv-title-row">
-            <h1>{selected.name}</h1>
+            <h1 id={`project-title-${selected.id}`}>{selected.name}</h1>
             <span className={`inv-status status-${selected.status.toLowerCase()}`}>
               {copy.statusLabels[selected.status]}
             </span>
@@ -70,8 +76,8 @@ export default function Inv() {
         </div>
 
         <div className="inv-actions">
-          {selected.live && <a href={selected.live} target="_blank" rel="noopener noreferrer" className="inv-link">{copy.openLive}</a>}
-          {selected.repo && <a href={selected.repo} target="_blank" rel="noopener noreferrer" className="inv-link">{copy.openRepo}</a>}
+          {selected.live && <a aria-label={`${copy.openLive} (${content.accessibility.opensNewTab})`} href={selected.live} target="_blank" rel="noopener noreferrer" className="inv-link">{copy.openLive}</a>}
+          {selected.repo && <a aria-label={`${copy.openRepo} (${content.accessibility.opensNewTab})`} href={selected.repo} target="_blank" rel="noopener noreferrer" className="inv-link">{copy.openRepo}</a>}
           {selected.sourcePrivate && <span className="inv-private">{copy.sourcePrivate}</span>}
         </div>
 

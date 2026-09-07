@@ -14,6 +14,10 @@ const sharedProjects = {
 
 export const portfolioContent = {
   en: {
+    accessibility: {
+      skipToContent: "Skip to portfolio content",
+      opensNewTab: "opens in a new tab",
+    },
     seo: {
       title: "Diego Corona | Full Stack Developer",
       description: "Full Stack Developer in Colima building accessible web applications with React, TypeScript, Ruby on Rails, Moodle, MongoDB, and PostgreSQL.",
@@ -118,6 +122,8 @@ export const portfolioContent = {
     },
     data: {
       place: "PLACE", period: "PERIOD", issuer: "ISSUER", year: "YEAR",
+      sectionsLabel: "Professional information categories",
+      entriesLabel: "Entries in the selected category",
       technologiesLabel: "Technologies and practices",
       contributions: "SELECTED CONTRIBUTIONS", viewCertificate: "VIEW CERTIFICATE",
       sections: {
@@ -161,6 +167,10 @@ export const portfolioContent = {
     },
   },
   es: {
+    accessibility: {
+      skipToContent: "Saltar al contenido del portafolio",
+      opensNewTab: "se abre en una pestaña nueva",
+    },
     seo: {
       title: "Diego Corona | Desarrollador Full Stack",
       description: "Desarrollador Full Stack en Colima especializado en aplicaciones web accesibles con React, TypeScript, Ruby on Rails, Moodle, MongoDB y PostgreSQL.",
@@ -203,6 +213,8 @@ export const portfolioContent = {
     },
     data: {
       place: "LUGAR", period: "PERIODO", issuer: "EMISOR", year: "AÑO", technologiesLabel: "Tecnologías y prácticas", contributions: "CONTRIBUCIONES DESTACADAS", viewCertificate: "VER CERTIFICADO",
+      sectionsLabel: "Categorías de información profesional",
+      entriesLabel: "Elementos de la categoría seleccionada",
       sections: {
         experience: { title: "EXPERIENCIA", items: [
           { id: 1, title: "Desarrollador web en SESAECOL", place: "SESAECOL – Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima", period: "Feb 2025 – Actualidad", technologies: ["React", "JavaScript", "CSS / Sass", "MongoDB", "Moodle"], highlights: ["Desarrollo y mantengo el sitio institucional, centralizando información pública, financiera y de transparencia.", "Administro la plataforma Moodle IAS, configuro cursos y mantengo actualizados sus recursos de aprendizaje y procesos de certificación.", "Implemento interfaces responsivas y accesibles con una arquitectura de información clara para la ciudadanía y las instituciones públicas."] },

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 type DataSectionKey = "experience" | "education" | "certifications";
@@ -21,6 +21,7 @@ export default function Data() {
   const dataSections = copy.sections as DataSections;
   const [activeSection, setActiveSection] = useState<DataSectionKey>("experience");
   const [selectedId, setSelectedId] = useState(1);
+  const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const section = dataSections[activeSection];
   const selected = (section.items.find((item) => item.id === selectedId) ?? section.items[0]!) as DataItem;
 
@@ -29,14 +30,49 @@ export default function Data() {
     setSelectedId(dataSections[key].items[0]!.id);
   };
 
+  const sectionKeys = Object.keys(dataSections) as DataSectionKey[];
+  const handleTabKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    currentIndex: number,
+  ) => {
+    let nextIndex: number | undefined;
+
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      nextIndex = (currentIndex + 1) % sectionKeys.length;
+    }
+    if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      nextIndex = (currentIndex - 1 + sectionKeys.length) % sectionKeys.length;
+    }
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = sectionKeys.length - 1;
+    if (nextIndex === undefined) return;
+
+    event.preventDefault();
+    const nextSection = sectionKeys[nextIndex]!;
+    selectSection(nextSection);
+    tabRefs.current[nextIndex]?.focus();
+  };
+
   return (
     <div className="data-screen">
-      <div className="data-menu">
-        {(Object.keys(dataSections) as DataSectionKey[]).map((key) => (
+      <div
+        className="data-menu"
+        aria-label={copy.sectionsLabel}
+        aria-orientation="vertical"
+        role="tablist"
+      >
+        {sectionKeys.map((key, index) => (
           <button
             key={key}
+            aria-controls="data-panel"
+            aria-selected={activeSection === key}
             className={`data-tab ${activeSection === key ? "active" : ""}`}
+            id={`data-tab-${key}`}
             onClick={() => selectSection(key)}
+            onKeyDown={(event) => handleTabKeyDown(event, index)}
+            ref={(element) => { tabRefs.current[index] = element; }}
+            role="tab"
+            tabIndex={activeSection === key ? 0 : -1}
             type="button"
           >
             {dataSections[key].title}
@@ -44,10 +80,12 @@ export default function Data() {
         ))}
       </div>
 
-      <div className="data-list">
+      <div className="data-list" aria-label={copy.entriesLabel} role="group">
         {section.items.map((item) => (
           <button
             key={item.id}
+            aria-controls="data-panel"
+            aria-pressed={selected.id === item.id}
             className={`data-item ${selected.id === item.id ? "active" : ""}`}
             onClick={() => setSelectedId(item.id)}
             type="button"
@@ -57,8 +95,14 @@ export default function Data() {
         ))}
       </div>
 
-      <div className="data-details">
-        <div className="data-title">{selected.title}</div>
+      <div
+        className="data-details"
+        id="data-panel"
+        aria-labelledby={`data-tab-${activeSection}`}
+        role="tabpanel"
+        tabIndex={0}
+      >
+        <h1 className="data-title">{selected.title}</h1>
         {"place" in selected && <p><span>{copy.place}</span> {selected.place}</p>}
         {"period" in selected && <p><span>{copy.period}</span> {selected.period}</p>}
         {"issuer" in selected && <p><span>{copy.issuer}</span> {selected.issuer}</p>}
@@ -87,6 +131,7 @@ export default function Data() {
 
         {"file" in selected && (
           <a
+            aria-label={`${copy.viewCertificate} (${content.accessibility.opensNewTab})`}
             href={import.meta.env.BASE_URL + selected.file}
             target="_blank"
             rel="noopener noreferrer"

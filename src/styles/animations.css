@@ -102,3 +102,18 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .pipboy-frame,
+  .pipboy-frame::before,
+  .flicker,
+  .distort,
+  .section-transition,
+  .section-content-item {
+    animation: none;
+  }
+
+  .progress-fill {
+    transition: none;
+  }
+}
+

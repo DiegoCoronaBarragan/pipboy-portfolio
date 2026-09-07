@@ -107,6 +107,33 @@
 }
 
 /* Navigation */
+:where(a, button):focus-visible {
+  outline: 2px solid var(--pip-green);
+  outline-offset: 3px;
+}
+
+.pipboy-content:focus {
+  outline: 2px solid var(--pip-green);
+  outline-offset: -2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 20;
+  padding: 8px 12px;
+  border: 2px solid var(--pip-green);
+  background: var(--pip-dark);
+  color: var(--pip-green);
+  text-decoration: none;
+  transform: translate(-50%, -180%);
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0);
+}
+
 .pipboy-navigation {
   display: flex;
   align-items: flex-end;
@@ -130,7 +157,7 @@
   color: var(--pip-green);
   padding: 12px 20px;
   margin-right: 12px;
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: pointer;
 }
 
@@ -142,7 +169,7 @@
 .pipboy-tab-label {
   font-size: 0.68rem;
   letter-spacing: 1px;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 .pipboy-tab.active {
@@ -169,7 +196,7 @@
   font: inherit;
   font-size: 0.68rem;
   letter-spacing: 1px;
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: pointer;
 }
 
@@ -256,7 +283,6 @@
 .stat-action:focus-visible {
   background: rgba(0, 255, 0, 0.08);
   box-shadow: 0 0 8px rgba(0, 255, 102, 0.35);
-  outline: none;
   text-shadow: 0 0 8px var(--pip-green);
 }
 
@@ -378,7 +404,7 @@
   padding: 10px 12px;
   text-align: left;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 .inv-item.active {
@@ -389,7 +415,7 @@
 
 .inv-item-index {
   font-size: 0.75rem;
-  opacity: 0.65;
+  opacity: 0.8;
 }
 
 .inv-item-copy {
@@ -407,7 +433,7 @@
 .inv-item-copy small {
   font-size: 0.7rem;
   letter-spacing: 1px;
-  opacity: 0.65;
+  opacity: 0.8;
 }
 
 .inv-details {
@@ -554,7 +580,6 @@
 .inv-link:hover,
 .inv-link:focus-visible {
   background: rgba(0, 255, 0, 0.08);
-  outline: none;
   text-shadow: 0 0 8px var(--pip-green);
 }
 
@@ -621,8 +646,11 @@
 
 .data-title {
   border-bottom: 2px solid var(--pip-border);
+  margin-top: 0;
   margin-bottom: 12px;
   padding-bottom: 4px;
+  font-size: 1rem;
+  font-weight: normal;
   letter-spacing: 2px;
 }
 
@@ -990,6 +1018,21 @@
 
   .log-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (pointer: coarse) {
+  .pipboy-tab,
+  .language-switcher button,
+  .stat-action,
+  .inv-item,
+  .inv-link,
+  .data-tab,
+  .data-item,
+  .data-link,
+  .copy-btn,
+  .log-link {
+    min-height: 44px;
   }
 }
 

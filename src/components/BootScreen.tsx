@@ -14,6 +14,13 @@ export default function BootScreen({ onFinish }: BootScreenProps) {
     let currentProgress = 0;
     let finishTimeout: ReturnType<typeof setTimeout> | undefined;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(100);
+      setMessageIndex(content.boot.messages.length - 1);
+      finishTimeout = setTimeout(onFinish, 50);
+      return () => clearTimeout(finishTimeout);
+    }
+
     const interval = setInterval(() => {
       currentProgress = Math.min(
         100,

@@ -6,6 +6,7 @@ import Stat from "./sections/Stat";
 import Inv from "./sections/Inv";
 import Data from "./sections/Data";
 import Log from "./sections/Log";
+import { useLanguage } from "./i18n/LanguageContext";
 import type { Section } from "./types/navigation";
 import "./styles/variables.css";
 import "./styles/pipboy.css";
@@ -23,6 +24,7 @@ const SECTION_COMPONENTS: Record<Section, ComponentType<SectionComponentProps>> 
 };
 
 function App() {
+  const { content } = useLanguage();
   const [booted, setBooted] = useState(false);
   const [section, setSection] = useState<Section>("STAT");
   const handleBootFinish = useCallback(() => setBooted(true), []);
@@ -38,8 +40,11 @@ function App() {
           <BootScreen onFinish={handleBootFinish} />
         ) : (
           <div className="pipboy-layout">
+            <a className="skip-link" href="#portfolio-content">
+              {content.accessibility.skipToContent}
+            </a>
             <PipboyMenu active={section} onChange={setSection} />
-            <main className="pipboy-content">
+            <main className="pipboy-content" id="portfolio-content" tabIndex={-1}>
               <div key={section} className="section-transition">
                 <CurrentSection onNavigate={handleNavigate} />
               </div>
