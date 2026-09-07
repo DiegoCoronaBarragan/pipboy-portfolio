@@ -41,6 +41,7 @@ export default function Stat({ onNavigate }: StatProps) {
               {copy.viewProjects}
             </button>
             <a
+              aria-label={`${copy.downloadCv} (${content.accessibility.opensNewTab})`}
               className="stat-action"
               href={BASE_URL + "cv/Diego_Corona_CV.pdf"}
               rel="noopener noreferrer"

@@ -63,6 +63,7 @@ export default function Log() {
             {copy.sendEmail}
           </a>
           <a
+            aria-label={`${copy.viewLinkedIn} (${content.accessibility.opensNewTab})`}
             className="log-link"
             href="https://www.linkedin.com/in/itsdiegocorona/"
             rel="noopener noreferrer"
@@ -71,6 +72,7 @@ export default function Log() {
             {copy.viewLinkedIn}
           </a>
           <a
+            aria-label={`${copy.viewGithub} (${content.accessibility.opensNewTab})`}
             className="log-link"
             href="https://github.com/DiegoCoronaBarragan"
             rel="noopener noreferrer"
@@ -79,6 +81,7 @@ export default function Log() {
             {copy.viewGithub}
           </a>
           <a
+            aria-label={`${copy.downloadCv} (${content.accessibility.opensNewTab})`}
             className="log-link"
             href={import.meta.env.BASE_URL + "cv/Diego_Corona_CV.pdf"}
             rel="noopener noreferrer"
