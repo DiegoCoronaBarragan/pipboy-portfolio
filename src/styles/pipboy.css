@@ -107,6 +107,12 @@
 }
 
 /* Navigation */
+.pipboy-navigation {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
 .pipboy-menu {
   display: flex;
   align-items: flex-end;
@@ -147,6 +153,32 @@
   text-shadow: 0 0 8px var(--pip-green);
   position: relative;
   z-index: 2;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 4px;
+  padding: 0 24px 10px 12px;
+}
+
+.language-switcher button {
+  border: 1px solid var(--pip-green);
+  background: transparent;
+  color: var(--pip-green);
+  padding: 5px 8px;
+  font: inherit;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.language-switcher button:hover,
+.language-switcher button:focus-visible,
+.language-switcher button.active {
+  background: rgba(0, 255, 0, 0.12);
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+  opacity: 1;
 }
 
 /* Stats section */
@@ -760,10 +792,21 @@
     padding: 8px;
   }
 
+  .pipboy-navigation {
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
   .pipboy-menu {
+    flex: 1 1 100%;
     flex-wrap: wrap;
     height: auto;
     padding: 0 8px;
+  }
+
+  .language-switcher {
+    margin-left: auto;
+    padding: 8px;
   }
 
   .pipboy-tab {
