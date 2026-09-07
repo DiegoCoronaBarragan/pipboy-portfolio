@@ -1,0 +1,196 @@
+const sharedProjects = {
+  links: {
+    sesaecol: "https://sesaecol-gob.com/",
+    ias: "https://iasesaecol.mx/",
+    portfolioRepo: "https://github.com/DiegoCoronaBarragan/pipboy-portfolio",
+    portfolioLive: "https://diegocoronabarragan.github.io/pipboy-portfolio/",
+  },
+  images: {
+    sesaecol: "images/projects/sesaecol-home.png",
+    ias: "images/projects/ias-home.png",
+    portfolio: "images/projects/pipboy-portfolio-stat.png",
+  },
+} as const;
+
+export const portfolioContent = {
+  en: {
+    navigation: {
+      ariaLabel: "Primary portfolio navigation",
+      tabs: { STAT: "ABOUT", INV: "PROJECTS", DATA: "EXPERIENCE", LOG: "CONTACT" },
+      languageLabel: "Language",
+    },
+    boot: {
+      messages: [
+        "Initializing system...",
+        "Loading core modules...",
+        "Mounting data drive...",
+        "Calibrating interface...",
+        "Starting Pip-Boy OS...",
+      ],
+      progressLabel: "Loading portfolio",
+      loading: "Loading portfolio...",
+    },
+    stat: {
+      avatarAlt: "Diego Corona",
+      system: "SYSTEM",
+      online: "ONLINE",
+      language: "LANG",
+      mode: "MODE",
+      eyebrow: "PROFILE // FULL STACK DEVELOPER",
+      name: "DIEGO J. CORONA BARRAGÁN",
+      headline: "I build accessible, maintainable web applications from interface to database.",
+      summary: "Professional experience developing and maintaining institutional platforms with React, TypeScript, Ruby on Rails, MongoDB, and PostgreSQL, focused on practical solutions for real users.",
+      viewProjects: "VIEW PROJECTS",
+      downloadCv: "DOWNLOAD CV",
+      skillsTitle: "SKILLS",
+      evidenceLabel: "EVIDENCE",
+      technologiesLabel: "technologies",
+      skillGroups: [
+        { category: "FRONTEND", skills: ["React", "TypeScript", "JavaScript", "CSS / Sass"], evidence: "Responsive, component-based interfaces for institutional platforms." },
+        { category: "BACKEND", skills: ["Ruby on Rails", "Moodle"], evidence: "Reporting, client-management, and online learning platform features." },
+        { category: "DATA", skills: ["MongoDB", "PostgreSQL"], evidence: "Application persistence, CRUD workflows, and database management." },
+        { category: "DELIVERY", skills: ["Git", "GitHub", "Vite", "Responsive UI"], evidence: "Version-controlled development, production builds, and web deployment." },
+      ],
+    },
+    projects: {
+      listLabel: "Featured projects",
+      caseStudy: "CASE STUDY",
+      technologiesLabel: "Technologies used",
+      challenge: "CHALLENGE",
+      contribution: "MY CONTRIBUTION",
+      outcome: "OUTCOME",
+      openLive: "OPEN LIVE SYSTEM",
+      openRepo: "OPEN REPOSITORY",
+      sourcePrivate: "SOURCE PRIVATE",
+      preview: "PROJECT PREVIEW",
+      statusLabels: { LIVE: "LIVE", INTERNAL: "INTERNAL", ACTIVE: "ACTIVE" },
+      items: [
+        {
+          id: 1, name: "SESAECOL Institutional Website", type: "PUBLIC-SECTOR WEB PLATFORM", status: "LIVE",
+          summary: "Official website for the Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima.",
+          technologies: ["React", "JavaScript", "Responsive UI"],
+          challenge: "The institution needed an official digital presence where citizens could find essential public, financial, transparency, and institutional information.",
+          contribution: "Contributed to the website's initial development and continue to support its administration, content updates, and ongoing maintenance.",
+          outcome: "Delivered an active institutional platform that centralizes public information and access to anticorruption services and resources.",
+          image: sharedProjects.images.sesaecol,
+          imageAlt: "SESAECOL institutional website homepage showing public services and transparency navigation",
+          sourcePrivate: true, live: sharedProjects.links.sesaecol,
+        },
+        {
+          id: 2, name: "Interfaz Académica SESAECOL", type: "LEARNING AND CERTIFICATION PLATFORM", status: "LIVE",
+          summary: "Online learning environment for public-sector courses, resources, and certificates.",
+          technologies: ["Moodle", "LMS Administration", "Course Management"],
+          challenge: "Public institutions needed a shared platform where they could publish courses and provide certificates to participants.",
+          contribution: "Created the Moodle-based platform and remain responsible for its administration, course configuration, updates, and maintenance.",
+          outcome: "Launched an active system that currently hosts public-sector courses, learning resources, and certificate-enabled training.",
+          image: sharedProjects.images.ias,
+          imageAlt: "IAS learning platform homepage showing the Interfaz Académica SESAECOL course portal",
+          live: sharedProjects.links.ias,
+        },
+        {
+          id: 3, name: "LINCE", type: "SURVEY OPERATIONS SYSTEM", status: "INTERNAL",
+          summary: "Internal platform for managing citizen surveys and their operational logistics.",
+          technologies: ["Ruby", "Ruby on Rails"],
+          challenge: "Survey teams needed a centralized way to register, count, and administer citizen surveys while maintaining control over field logistics.",
+          contribution: "Participated in the system's creation and supported its administration, updates, and continued operation.",
+          outcome: "The completed system was used during an electoral period to manage survey records and coordinate the associated logistics.",
+          sourcePrivate: true,
+        },
+        {
+          id: 4, name: "Pip-Boy Portfolio", type: "PERSONAL FRONTEND PROJECT", status: "ACTIVE",
+          summary: "A Fallout-inspired portfolio designed as an interactive, strongly typed system interface.",
+          technologies: ["React", "TypeScript", "Vite", "CSS"],
+          challenge: "Create a memorable portfolio without sacrificing maintainability, accessibility, or clear access to professional information.",
+          contribution: "Designed and developed the complete interface, component architecture, strict TypeScript model, animations, and GitHub Pages deployment workflow.",
+          outcome: "Produced a responsive portfolio that presents skills, projects, experience, certifications, and contact information in a distinctive format.",
+          image: sharedProjects.images.portfolio,
+          imageAlt: "Pip-Boy portfolio STAT screen showing Diego Corona's profile and technical skills",
+          repo: sharedProjects.links.portfolioRepo, live: sharedProjects.links.portfolioLive,
+        },
+      ],
+    },
+    data: {
+      place: "PLACE", period: "PERIOD", issuer: "ISSUER", year: "YEAR",
+      technologiesLabel: "Technologies and practices",
+      contributions: "SELECTED CONTRIBUTIONS", viewCertificate: "VIEW CERTIFICATE",
+      sections: {
+        experience: {
+          title: "EXPERIENCE",
+          items: [
+            { id: 1, title: "SESAECOL Web Developer", place: "SESAECOL – Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima", period: "Feb 2025 – Present", technologies: ["React", "JavaScript", "CSS / Sass", "MongoDB", "Moodle"], highlights: ["Contribute to the ongoing development and maintenance of the official institutional website, centralizing public, financial, and transparency information.", "Created and administer the IAS Moodle platform, including course configuration, learning resources, updates, and certificate-enabled training.", "Build responsive, accessible interface updates with a focus on clear information architecture for citizens and public institutions."] },
+            { id: 2, title: "ForenTec Ruby on Rails Developer", place: "ForenTec", period: "Jul 2023 – Dec 2024", technologies: ["Ruby on Rails", "JavaScript", "Google Maps API", "Railway"], highlights: ["Developed an anonymous reporting system for public security institutions using Ruby on Rails.", "Built client-management CRUD workflows for surveys, events, requests, and reports.", "Implemented geographic data visualization with Google Maps API and managed separate project databases.", "Supported the production deployment of a client project using Railway."] },
+            { id: 3, title: "Bright Coders Ruby on Rails Developer", place: "Bright Coders", period: "Dec 2022 – Apr 2023", technologies: ["Ruby on Rails", "JavaScript", "Git", "RuboCop", "RubyCritic"], highlights: ["Developed web application features with Ruby on Rails and JavaScript using version-controlled workflows.", "Applied test-driven development practices and reviewed code quality with RuboCop and RubyCritic.", "Collaborated through agile practices, code reviews, and shared delivery responsibilities."] },
+            { id: 4, title: "DIF Estatal Colima Full Stack Developer", place: "DIF Estatal Colima", period: "Feb 2022 – Oct 2022", technologies: ["Full Stack Development", "CRUD", "Inventory Management"], highlights: ["Designed and developed a web-based inventory control system for institutional warehouse operations.", "Implemented workflows to register, edit, delete, and visualize inventory records.", "Improved operational visibility and resource tracking by centralizing inventory information."] },
+          ],
+        },
+        education: { title: "EDUCATION", items: [{ id: 1, title: "Bachelor’s Degree in Intelligent Computer Engineering", place: "Universidad de Colima", period: "2019 – 2024", description: "Bachelor’s degree focused on software development, system analysis, and web technologies, with emphasis on problem-solving and continuous learning." }] },
+        certifications: { title: "CERTIFICATIONS", items: [
+          { id: 1, title: "Ruby on Rails Web Developer", issuer: "Professional Certification", year: "2023", file: "certificates/BC1222022.pdf" },
+          { id: 2, title: "English Level Certificate (B1)", issuer: "Language Proficiency Assessment", year: "2023", file: "certificates/EF_SET_Certificate.pdf" },
+        ] },
+      },
+    },
+    contact: {
+      header: "USER PROFILE LOADED", name: "NAME", role: "ROLE", roleValue: "Full Stack Developer",
+      location: "LOCATION", locationValue: "Colima, Mexico", email: "EMAIL", copy: "COPY", copied: "COPIED",
+      downloadCv: "DOWNLOAD CV",
+    },
+  },
+  es: {
+    navigation: {
+      ariaLabel: "Navegación principal del portafolio",
+      tabs: { STAT: "PERFIL", INV: "PROYECTOS", DATA: "EXPERIENCIA", LOG: "CONTACTO" },
+      languageLabel: "Idioma",
+    },
+    boot: {
+      messages: ["Inicializando sistema...", "Cargando módulos principales...", "Montando unidad de datos...", "Calibrando interfaz...", "Iniciando Pip-Boy OS..."],
+      progressLabel: "Cargando portafolio", loading: "Cargando portafolio...",
+    },
+    stat: {
+      avatarAlt: "Diego Corona", system: "SISTEMA", online: "EN LÍNEA", language: "IDIOMA", mode: "MODO",
+      eyebrow: "PERFIL // DESARROLLADOR FULL STACK", name: "DIEGO J. CORONA BARRAGÁN",
+      headline: "Desarrollo aplicaciones web accesibles y mantenibles, desde la interfaz hasta la base de datos.",
+      summary: "Experiencia profesional desarrollando y manteniendo plataformas institucionales con React, TypeScript, Ruby on Rails, MongoDB y PostgreSQL, enfocadas en soluciones prácticas para usuarios reales.",
+      viewProjects: "VER PROYECTOS", downloadCv: "DESCARGAR CV", skillsTitle: "HABILIDADES", evidenceLabel: "EVIDENCIA", technologiesLabel: "tecnologías",
+      skillGroups: [
+        { category: "FRONTEND", skills: ["React", "TypeScript", "JavaScript", "CSS / Sass"], evidence: "Interfaces responsivas y basadas en componentes para plataformas institucionales." },
+        { category: "BACKEND", skills: ["Ruby on Rails", "Moodle"], evidence: "Funciones para reportes, gestión de clientes y plataformas de aprendizaje en línea." },
+        { category: "DATOS", skills: ["MongoDB", "PostgreSQL"], evidence: "Persistencia de aplicaciones, flujos CRUD y administración de bases de datos." },
+        { category: "ENTREGA", skills: ["Git", "GitHub", "Vite", "UI responsiva"], evidence: "Desarrollo con control de versiones, compilaciones de producción y despliegue web." },
+      ],
+    },
+    projects: {
+      listLabel: "Proyectos destacados", caseStudy: "CASO DE ESTUDIO", technologiesLabel: "Tecnologías utilizadas",
+      challenge: "DESAFÍO", contribution: "MI CONTRIBUCIÓN", outcome: "RESULTADO", openLive: "ABRIR SISTEMA", openRepo: "ABRIR REPOSITORIO", sourcePrivate: "CÓDIGO PRIVADO", preview: "VISTA PREVIA",
+      statusLabels: { LIVE: "EN LÍNEA", INTERNAL: "INTERNO", ACTIVE: "ACTIVO" },
+      items: [
+        { id: 1, name: "Sitio institucional de SESAECOL", type: "PLATAFORMA WEB DEL SECTOR PÚBLICO", status: "LIVE", summary: "Sitio oficial de la Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima.", technologies: ["React", "JavaScript", "UI responsiva"], challenge: "La institución necesitaba una presencia digital oficial donde la ciudadanía pudiera consultar información pública, financiera, de transparencia e institucional.", contribution: "Desarrollo y mantengo el sitio institucional, administro sus contenidos y publico actualizaciones de información pública y de transparencia.", outcome: "La plataforma centraliza información pública y facilita el acceso de la ciudadanía a servicios y recursos anticorrupción.", image: sharedProjects.images.sesaecol, imageAlt: "Página principal del sitio institucional de SESAECOL con servicios públicos y navegación de transparencia", sourcePrivate: true, live: sharedProjects.links.sesaecol },
+        { id: 2, name: "Interfaz Académica SESAECOL", type: "PLATAFORMA DE APRENDIZAJE Y CERTIFICACIÓN", status: "LIVE", summary: "Entorno de aprendizaje en línea para cursos, recursos y certificados del sector público.", technologies: ["Moodle", "Administración LMS", "Gestión de cursos"], challenge: "Las instituciones públicas necesitaban una plataforma compartida donde pudieran publicar cursos y entregar certificados a sus participantes.", contribution: "Administro y mantengo la plataforma Moodle IAS, configuro cursos y actualizo sus recursos, contenidos y procesos de certificación.", outcome: "El sistema aloja cursos y recursos de aprendizaje, y permite ofrecer capacitaciones con certificados a instituciones públicas.", image: sharedProjects.images.ias, imageAlt: "Página principal de IAS mostrando el portal de cursos de la Interfaz Académica SESAECOL", live: sharedProjects.links.ias },
+        { id: 3, name: "LINCE", type: "SISTEMA DE OPERACIÓN DE ENCUESTAS", status: "INTERNAL", summary: "Plataforma interna para administrar encuestas ciudadanas y su logística operativa.", technologies: ["Ruby", "Ruby on Rails"], challenge: "Los equipos necesitaban una forma centralizada de registrar, contabilizar y administrar encuestas ciudadanas, manteniendo el control de la logística en campo.", contribution: "Participé en la creación del sistema y apoyé su administración, actualización y operación continua.", outcome: "El sistema terminado se utilizó durante un periodo electoral para administrar registros de encuestas y coordinar su logística.", sourcePrivate: true },
+        { id: 4, name: "Portafolio Pip-Boy", type: "PROYECTO FRONTEND PERSONAL", status: "ACTIVE", summary: "Portafolio inspirado en Fallout, diseñado como una interfaz de sistema interactiva y fuertemente tipada.", technologies: ["React", "TypeScript", "Vite", "CSS"], challenge: "Crear un portafolio memorable sin sacrificar mantenibilidad, accesibilidad ni el acceso claro a la información profesional.", contribution: "Diseño y desarrollo la interfaz, la arquitectura de componentes, el modelo estricto de TypeScript, las animaciones y el flujo de despliegue en GitHub Pages.", outcome: "El portafolio presenta habilidades, proyectos, experiencia, certificaciones y medios de contacto mediante una experiencia responsiva y distintiva.", image: sharedProjects.images.portfolio, imageAlt: "Pantalla STAT del portafolio Pip-Boy mostrando el perfil y las habilidades técnicas de Diego Corona", repo: sharedProjects.links.portfolioRepo, live: sharedProjects.links.portfolioLive },
+      ],
+    },
+    data: {
+      place: "LUGAR", period: "PERIODO", issuer: "EMISOR", year: "AÑO", technologiesLabel: "Tecnologías y prácticas", contributions: "CONTRIBUCIONES DESTACADAS", viewCertificate: "VER CERTIFICADO",
+      sections: {
+        experience: { title: "EXPERIENCIA", items: [
+          { id: 1, title: "Desarrollador web en SESAECOL", place: "SESAECOL – Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima", period: "Feb 2025 – Actualidad", technologies: ["React", "JavaScript", "CSS / Sass", "MongoDB", "Moodle"], highlights: ["Desarrollo y mantengo el sitio institucional, centralizando información pública, financiera y de transparencia.", "Administro la plataforma Moodle IAS, configuro cursos y mantengo actualizados sus recursos de aprendizaje y procesos de certificación.", "Implemento interfaces responsivas y accesibles con una arquitectura de información clara para la ciudadanía y las instituciones públicas."] },
+          { id: 2, title: "Desarrollador Ruby on Rails en ForenTec", place: "ForenTec", period: "Jul 2023 – Dic 2024", technologies: ["Ruby on Rails", "JavaScript", "Google Maps API", "Railway"], highlights: ["Desarrollé un sistema de denuncias anónimas para instituciones de seguridad pública con Ruby on Rails.", "Construí flujos CRUD para la gestión de clientes, encuestas, eventos, solicitudes y reportes.", "Implementé visualización de datos geográficos con Google Maps API y administré bases de datos independientes por proyecto.", "Apoyé el despliegue en producción de un proyecto de cliente mediante Railway."] },
+          { id: 3, title: "Desarrollador Ruby on Rails en Bright Coders", place: "Bright Coders", period: "Dic 2022 – Abr 2023", technologies: ["Ruby on Rails", "JavaScript", "Git", "RuboCop", "RubyCritic"], highlights: ["Desarrollé funcionalidades web con Ruby on Rails y JavaScript mediante flujos de trabajo con control de versiones.", "Apliqué prácticas de desarrollo guiado por pruebas y revisé la calidad del código con RuboCop y RubyCritic.", "Colaboré mediante prácticas ágiles, revisiones de código y responsabilidades de entrega compartidas."] },
+          { id: 4, title: "Desarrollador Full Stack en DIF Estatal Colima", place: "DIF Estatal Colima", period: "Feb 2022 – Oct 2022", technologies: ["Desarrollo Full Stack", "CRUD", "Control de inventario"], highlights: ["Diseñé y desarrollé un sistema web de control de inventario para las operaciones del almacén institucional.", "Implementé flujos para registrar, editar, eliminar y visualizar los registros del inventario.", "Mejoré la visibilidad operativa y el seguimiento de recursos al centralizar la información del inventario."] },
+        ] },
+        education: { title: "EDUCACIÓN", items: [{ id: 1, title: "Ingeniería en Computación Inteligente", place: "Universidad de Colima", period: "2019 – 2024", description: "Licenciatura enfocada en desarrollo de software, análisis de sistemas y tecnologías web, con énfasis en resolución de problemas y aprendizaje continuo." }] },
+        certifications: { title: "CERTIFICACIONES", items: [
+          { id: 1, title: "Desarrollador web Ruby on Rails", issuer: "Certificación profesional", year: "2023", file: "certificates/BC1222022.pdf" },
+          { id: 2, title: "Certificado de inglés (B1)", issuer: "Evaluación de dominio del idioma", year: "2023", file: "certificates/EF_SET_Certificate.pdf" },
+        ] },
+      },
+    },
+    contact: {
+      header: "PERFIL DE USUARIO CARGADO", name: "NOMBRE", role: "ROL", roleValue: "Desarrollador Full Stack",
+      location: "UBICACIÓN", locationValue: "Colima, México", email: "CORREO", copy: "COPIAR", copied: "COPIADO", downloadCv: "DESCARGAR CV",
+    },
+  },
+} as const;
+
+export type PortfolioContent = (typeof portfolioContent)["en"] | (typeof portfolioContent)["es"];
