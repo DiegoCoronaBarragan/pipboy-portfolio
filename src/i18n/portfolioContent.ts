@@ -32,14 +32,17 @@ export const portfolioContent = {
     },
     boot: {
       messages: [
-        "Initializing system...",
-        "Loading core modules...",
-        "Mounting data drive...",
-        "Calibrating interface...",
-        "Starting Pip-Boy OS...",
+        "Initializing system core",
+        "Mounting portfolio data",
+        "Loading project records",
+        "Calibrating interface",
+        "Establishing contact channel",
       ],
       progressLabel: "Loading portfolio",
-      loading: "Loading portfolio...",
+      protocol: "RECRUITER ACCESS PROTOCOL",
+      version: "BUILD 3000.26",
+      skipHint: "ENTER / ESC TO CONTINUE",
+      skip: "SKIP INTRO",
     },
     stat: {
       avatarAlt: "Diego Corona",
@@ -184,8 +187,12 @@ export const portfolioContent = {
       languageLabel: "Idioma",
     },
     boot: {
-      messages: ["Inicializando sistema...", "Cargando módulos principales...", "Montando unidad de datos...", "Calibrando interfaz...", "Iniciando Pip-Boy OS..."],
-      progressLabel: "Cargando portafolio", loading: "Cargando portafolio...",
+      messages: ["Inicializando núcleo del sistema", "Montando datos del portafolio", "Cargando registros de proyectos", "Calibrando interfaz", "Estableciendo canal de contacto"],
+      progressLabel: "Cargando portafolio",
+      protocol: "PROTOCOLO DE ACCESO PARA RECLUTADORES",
+      version: "BUILD 3000.26",
+      skipHint: "ENTER / ESC PARA CONTINUAR",
+      skip: "OMITIR INTRO",
     },
     stat: {
       avatarAlt: "Diego Corona", system: "SISTEMA", online: "EN LÍNEA", language: "IDIOMA", mode: "MODO",
