@@ -10,7 +10,8 @@ interface BaseItem {
 interface ExperienceItem extends BaseItem {
   place: string;
   period: string;
-  description: string;
+  technologies: readonly string[];
+  highlights: readonly string[];
 }
 
 interface EducationItem extends BaseItem {
@@ -51,32 +52,49 @@ const dataSections: DataSections = {
         place:
           "SESAECOL – Secretaría Ejecutiva del Sistema Anticorrupción del Estado de Colima",
         period: "Feb 2025 – Present",
-        description:
-          "Development and maintenance of institutional web platforms focused on transparency and public access to information. Contributed to the development and ongoing maintenance of the official SESAECOL website and the IAS learning platform. Daily work includes frontend development with React, JavaScript, CSS, Sass, MongoDB, and Moodle-based educational solutions, ensuring accessibility, responsive design, and clear information structure.",
+        technologies: ["React", "JavaScript", "CSS / Sass", "MongoDB", "Moodle"],
+        highlights: [
+          "Contribute to the ongoing development and maintenance of the official institutional website, centralizing public, financial, and transparency information.",
+          "Created and administer the IAS Moodle platform, including course configuration, learning resources, updates, and certificate-enabled training.",
+          "Build responsive, accessible interface updates with a focus on clear information architecture for citizens and public institutions.",
+        ],
       },
       {
         id: 2,
         title: "ForenTec Ruby on Rails Developer",
         place: "ForenTec",
         period: "Jul 2023 – Dec 2024",
-        description:
-          "Worked on multiple Ruby on Rails projects for real-world clients. Developed an anonymous reporting web system for public security institutions and a client management platform using CRUD operations for surveys, events, requests, and reports. Implemented data visualization with Google Maps API and managed independent databases. One project was deployed using Railway.",
+        technologies: ["Ruby on Rails", "JavaScript", "Google Maps API", "Railway"],
+        highlights: [
+          "Developed an anonymous reporting system for public security institutions using Ruby on Rails.",
+          "Built client-management CRUD workflows for surveys, events, requests, and reports.",
+          "Implemented geographic data visualization with Google Maps API and managed separate project databases.",
+          "Supported the production deployment of a client project using Railway.",
+        ],
       },
       {
         id: 3,
         title: "Bright Coders Ruby on Rails Developer",
         place: "Bright Coders",
         period: "Dec 2022 – Apr 2023",
-        description:
-          "Developed web systems using Ruby on Rails and JavaScript while applying good development practices, test-driven development, and version control workflows. Performed unit testing with Rubocop and Rubycritic and worked under agile methodologies, strengthening teamwork and communication skills. This experience strengthened my foundations in professional development workflows and collaborative environments.",
+        technologies: ["Ruby on Rails", "JavaScript", "Git", "RuboCop", "RubyCritic"],
+        highlights: [
+          "Developed web application features with Ruby on Rails and JavaScript using version-controlled workflows.",
+          "Applied test-driven development practices and reviewed code quality with RuboCop and RubyCritic.",
+          "Collaborated through agile practices, code reviews, and shared delivery responsibilities.",
+        ],
       },
       {
         id: 4,
         title: "DIF Estatal Colima Full Stack Developer",
         place: "DIF Estatal Colima",
         period: "Feb 2022 – Oct 2022",
-        description:
-          "Designed and developed a web-based inventory control system for warehouse management. The system allowed users to register, edit, delete, and visualize inventory data, improving resource tracking and operational efficiency within the institution.",
+        technologies: ["Full Stack Development", "CRUD", "Inventory Management"],
+        highlights: [
+          "Designed and developed a web-based inventory control system for institutional warehouse operations.",
+          "Implemented workflows to register, edit, delete, and visualize inventory records.",
+          "Improved operational visibility and resource tracking by centralizing inventory information.",
+        ],
       },
     ],
   },
@@ -190,6 +208,28 @@ export default function Data() {
           <p className="data-desc">
             {selected.description}
           </p>
+        )}
+
+        {"technologies" in selected && (
+          <ul className="data-tech" aria-label="Technologies and practices">
+            {selected.technologies.map((technology) => (
+              <li key={technology}>{technology}</li>
+            ))}
+          </ul>
+        )}
+
+        {"highlights" in selected && (
+          <div className="data-contributions">
+            <div className="data-section-label">SELECTED CONTRIBUTIONS</div>
+            <ul className="data-highlights">
+              {selected.highlights.map((highlight, index) => (
+                <li key={highlight}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{highlight}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
         {"file" in selected && (
