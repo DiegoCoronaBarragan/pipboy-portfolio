@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>DC — Diego Corona</title>
+  <rect width="512" height="512" rx="72" fill="#001a0d"/>
+  <path
+    d="M68 24h376l44 44v376l-44 44H68l-44-44V68z"
+    fill="none"
+    stroke="#00cc55"
+    stroke-width="16"
+  />
+  <path
+    d="M98 132v248h72c61 0 88-47 88-124s-27-124-88-124H98z"
+    fill="none"
+    stroke="#00ff66"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+    stroke-width="30"
+  />
+  <path
+    d="M418 166c-22-25-48-38-80-38-57 0-86 50-86 128s29 128 86 128c32 0 58-13 80-38"
+    fill="none"
+    stroke="#00ff66"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+    stroke-width="30"
+  />
+  <path d="M82 430h348" stroke="#00cc55" stroke-width="10"/>
+</svg>
