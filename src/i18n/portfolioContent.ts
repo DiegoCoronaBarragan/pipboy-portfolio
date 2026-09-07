@@ -14,6 +14,13 @@ const sharedProjects = {
 
 export const portfolioContent = {
   en: {
+    seo: {
+      title: "Diego Corona | Full Stack Developer",
+      description: "Full Stack Developer in Colima building accessible web applications with React, TypeScript, Ruby on Rails, Moodle, MongoDB, and PostgreSQL.",
+      imageAlt: "Diego Corona's Fallout-inspired Pip-Boy developer portfolio",
+      locale: "en_US",
+      alternateLocale: "es_MX",
+    },
     navigation: {
       ariaLabel: "Primary portfolio navigation",
       tabs: { STAT: "ABOUT", INV: "PROJECTS", DATA: "EXPERIENCE", LOG: "CONTACT" },
@@ -137,6 +144,13 @@ export const portfolioContent = {
     },
   },
   es: {
+    seo: {
+      title: "Diego Corona | Desarrollador Full Stack",
+      description: "Desarrollador Full Stack en Colima especializado en aplicaciones web accesibles con React, TypeScript, Ruby on Rails, Moodle, MongoDB y PostgreSQL.",
+      imageAlt: "Portafolio de desarrollo de Diego Corona inspirado en la interfaz Pip-Boy de Fallout",
+      locale: "es_MX",
+      alternateLocale: "en_US",
+    },
     navigation: {
       ariaLabel: "Navegación principal del portafolio",
       tabs: { STAT: "PERFIL", INV: "PROYECTOS", DATA: "EXPERIENCIA", LOG: "CONTACTO" },

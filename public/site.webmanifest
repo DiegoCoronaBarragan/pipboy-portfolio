@@ -1,0 +1,18 @@
+{
+  "name": "Diego Corona | Full Stack Developer",
+  "short_name": "Diego Corona",
+  "description": "Full Stack Developer portfolio inspired by the Fallout Pip-Boy interface.",
+  "start_url": "/pipboy-portfolio/",
+  "scope": "/pipboy-portfolio/",
+  "display": "standalone",
+  "background_color": "#001a0d",
+  "theme_color": "#00ff66",
+  "icons": [
+    {
+      "src": "images/Avatar.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
